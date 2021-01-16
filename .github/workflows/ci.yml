@@ -1,0 +1,48 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: drivr
+          POSTGRES_PASSWORD: drivr
+          POSTGRES_DB: drivr_integration_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: "1.0.10"
+
+      - name: setup project dependencies
+        run: poetry install
+
+      - name: run quality jobs
+        run: ./scripts/lint.sh
+
+      - name: run unit tests and collect code coverage
+        run: ./scripts/test.unit.sh
+
+      - name: run integration tests
+        run: ./scripts/test.integration.sh
