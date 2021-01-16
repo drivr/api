@@ -1,0 +1,13 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+
+[*.{py,toml,behaverc,coveragerc}]
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.feature]
+indent_style = space
+indent_size = 2

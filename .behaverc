@@ -1,0 +1,14 @@
+[behave]
+junit = true
+junit_directory = tests/build/behave.reports
+logging_level = INFO
+paths = tests/integration
+# Do not print the file and line of the step definition with the steps.
+show_source = false
+
+[behave.userdata]
+# https://www.uvicorn.org/settings/#logging
+app_host = localhost
+app_port = 5000
+database_url = postgresql://drivr:drivr@localhost:5432/drivr_integration_test
+uvicorn_debug = error

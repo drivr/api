@@ -1,0 +1,15 @@
+[run]
+source = drivr
+
+[report]
+fail_under = 99
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self\.debug
+    raise AssertionError
+    raise NotImplementedError
+ignore_errors = True
+
+[html]
+directory = tests/build/coverage
