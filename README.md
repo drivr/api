@@ -1,4 +1,4 @@
-# API ![Continuous Integration](https://github.com/drivr/api/workflows/Continuous%20Integration/badge.svg)
+# API [![Continuous Integration](https://github.com/drivr/api/workflows/Continuous%20Integration/badge.svg)](https://github.com/drivr/api/actions?query=workflow%3A%22Continuous+Integration%22)
 
 ## Desenvolvimento
 
