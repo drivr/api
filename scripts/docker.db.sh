@@ -1,7 +1,7 @@
 DB_USER=drivr
 DB_PASS=drivr
 DB_NAME=drivr
-DB_CONTAINER=drivr_integration
+DB_CONTAINER=drivrdb
 
 docker run \
     --name $DB_CONTAINER \
