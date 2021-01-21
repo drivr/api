@@ -11,12 +11,12 @@ def test_password_hash_should_call_argon2_hash(
     plain_text = faker.word()
     hash_return = faker.sha256()
 
-    hash = mocker.patch(f"{__ARGON2__}.hash", return_value=hash_return)
+    argon2_hash = mocker.patch(f"{__ARGON2__}.hash", return_value=hash_return)
 
     actual = core.hash_password(plain_text=plain_text)
 
     assert hash_return == actual
-    hash.assert_called_once()
+    argon2_hash.assert_called_once()
 
 
 def test_password_verify_should_call_argon2_verify(
@@ -27,7 +27,10 @@ def test_password_verify_should_call_argon2_verify(
     hashed_password = faker.sha256()
     verify_return = faker.boolean()
 
-    verify = mocker.patch(f"{__ARGON2__}.verify", return_value=verify_return)
+    argon2_verify = mocker.patch(
+        f"{__ARGON2__}.verify",
+        return_value=verify_return,
+    )
 
     actual = core.verify_password(
         plain_text=plain_text,
@@ -35,4 +38,4 @@ def test_password_verify_should_call_argon2_verify(
     )
 
     assert verify_return == actual
-    verify.assert_called_once()
+    argon2_verify.assert_called_once()
