@@ -1,4 +1,4 @@
-# API [![Continuous Integration](https://github.com/drivr/api/workflows/Continuous%20Integration/badge.svg)](https://github.com/drivr/api/actions?query=workflow%3A%22Continuous+Integration%22)
+# API [![Continuous Integration][1]][2] [![Code style: black][3]][4]
 
 ## Desenvolvimento
 
@@ -60,3 +60,8 @@ poetry shell
 
 sh ./scripts/docker.test.integration.sh
 ```
+
+[1]: https://github.com/drivr/api/workflows/Continuous%20Integration/badge.svg
+[2]: https://github.com/drivr/api/actions?query=workflow%3A%22Continuous+Integration%22
+[3]: https://img.shields.io/badge/code%20style-black-000000.svg
+[4]: https://github.com/psf/black
