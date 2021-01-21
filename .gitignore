@@ -17,5 +17,6 @@ __pycache__
 
 # Testing and code coverage
 .coverage
+coverage.xml
 .pytest_cache
 tests/build

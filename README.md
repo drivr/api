@@ -1,4 +1,4 @@
-# API [![Continuous Integration][1]][2] [![Code style: black][3]][4]
+# API [![Continuous Integration][1]][2] [![Code style: black][3]][4] [![Maintainability Rating][5]][6]
 
 ## Desenvolvimento
 
@@ -65,3 +65,5 @@ sh ./scripts/docker.test.integration.sh
 [2]: https://github.com/drivr/api/actions?query=workflow%3A%22Continuous+Integration%22
 [3]: https://img.shields.io/badge/code%20style-black-000000.svg
 [4]: https://github.com/psf/black
+[5]: https://sonarcloud.io/api/project_badges/measure?project=drivr_api&metric=sqale_rating
+[6]: https://sonarcloud.io/dashboard?id=drivr_api
