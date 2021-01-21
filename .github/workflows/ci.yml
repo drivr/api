@@ -42,13 +42,7 @@ jobs:
         run: ./scripts/lint.sh
 
       - name: run unit tests and collect code coverage
-        run: ./scripts/test.unit.coverage.sh
+        run: ./scripts/test.unit.sh
 
       - name: run integration tests
         run: ./scripts/test.integration.sh
-
-      - name: SonarCloud scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
