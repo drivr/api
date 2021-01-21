@@ -33,6 +33,7 @@ python-multipart = "^0.0.5"
 passlib = "^1.7.4"
 argon2-cffi = "^20.1.0"
 psycopg2 = "^2.8.6"
+pydantic = {extras = ["email"], version = "^1.7.3"}
 
 [tool.poetry.dev-dependencies]
 autoflake = "^1.4"
