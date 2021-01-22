@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     def mount_cors_origins(
         cls,
         v: Union[str, List[str]],
-    ) -> Union[List[str], str]:
+    ) -> Union[List[str], str]:  # pragma: no cover
         """Mount the cors origins."""
 
         if isinstance(v, str) and not v.startswith("["):
@@ -49,7 +49,7 @@ class Settings(BaseSettings):
         cls,
         v: Optional[str],
         values: Dict[str, Any],
-    ) -> Any:
+    ) -> Any:  # pragma: no cover
         """Mount the database URL connection."""
 
         if isinstance(v, str):
