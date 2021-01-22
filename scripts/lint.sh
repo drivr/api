@@ -25,7 +25,9 @@ poetry run pylama $APP_PATH $UNIT_TEST_PATH
 #   - D101: Missing docstring in public class.
 #   - D102: Missing docstring in public method.
 #   - D103: Missing docstring in public function.
-poetry run pydocstyle --select=D101,D102,D103 \
+poetry run pydocstyle \
+    --select=D101,D102,D103 \
+    --match-dir="^(?!migrations).*" \
     $APP_PATH
 
 poetry run black --check $APP_PATH $UNIT_TEST_PATH
