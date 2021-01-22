@@ -4,6 +4,8 @@ from sqlalchemy.ext.declarative.api import declared_attr
 
 @as_declarative()
 class Entity:
+    """The base class used to map the database entities."""
+
     __name__: str
 
     @declared_attr
