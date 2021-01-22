@@ -10,7 +10,7 @@ class CRUDReports(
         schema.ReportUpdate,
     ]
 ):
-    ...
+    """CRUD actions associated to the 'report' entity."""
 
 
 reports = CRUDReports(model=model.Report)

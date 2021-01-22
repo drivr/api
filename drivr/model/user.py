@@ -7,6 +7,8 @@ from drivr.db.entity import Entity
 
 
 class User(Entity):
+    """The attribute from 'user' table."""
+
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)

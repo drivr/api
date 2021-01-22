@@ -6,6 +6,8 @@ from drivr.db.entity import Entity
 
 
 class Report(Entity):
+    """The attribute from 'report' table."""
+
     id = Column(Integer, primary_key=True, index=True)
     markdown = Column(Text, nullable=False)
     html = Column(Text, nullable=False)
