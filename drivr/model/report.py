@@ -1,15 +1,14 @@
 from sqlalchemy import sql
-from sqlalchemy.orm import relationship
-from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import DateTime, Integer, String
+from sqlalchemy.sql.schema import Column, ForeignKey
+from sqlalchemy.sql.sqltypes import DateTime, Integer, Text
 
 from drivr.db.entity import Entity
 
 
-class User(Entity):
+class Report(Entity):
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, nullable=False, unique=True)
-    password = Column(String, nullable=False)
+    markdown = Column(Text, nullable=False)
+    html = Column(Text, nullable=False)
     created_at = Column(
         DateTime,
         nullable=False,
@@ -22,8 +21,4 @@ class User(Entity):
         onupdate=sql.func.now(),
     )
 
-    reports = relationship(
-        "Report",
-        backref="user",
-        passive_deletes=True,
-    )
+    user_id = Column(ForeignKey("user.id", ondelete="CASCADE"))
