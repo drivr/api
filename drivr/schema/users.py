@@ -22,11 +22,13 @@ class UserUpdate(UserBase):
 
     email: Optional[EmailStr] = None
     password: Optional[str] = None
+    moderator: Optional[bool] = None
 
 
 class User(UserBase):
     """The schema used to expose the user model."""
 
+    moderator: bool
     created_at: datetime
     updated_at: datetime
 
