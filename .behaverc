@@ -1,6 +1,6 @@
 [behave]
 junit = true
-junit_directory = tests/build/behave.reports
+junit_directory = tests/build/bdd
 logging_level = INFO
 paths = tests/integration
 # Do not print the file and line of the step definition with the steps.
