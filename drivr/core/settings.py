@@ -19,7 +19,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str = token_urlsafe(32)
 
     # 60 minutes * 24 hours * 8 days = 8 days
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
+    ACCESS_TOKEN_EXPIRATION: int = 60 * 24 * 8
+    ACCESS_TOKEN_ALGORITHM: str = "HS256"
 
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost", "http://localhost:4200"]'
