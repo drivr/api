@@ -22,6 +22,7 @@ def upgrade():
         sa.Column("email", sa.String(), nullable=False),
         sa.Column("password", sa.String(), nullable=False),
         sa.Column("moderator", sa.Boolean(), nullable=False, default=False),
+        sa.Column("active", sa.Boolean(), nullable=False, default=True),
         sa.Column(
             "created_at",
             sa.DateTime(),

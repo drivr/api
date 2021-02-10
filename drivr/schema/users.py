@@ -29,6 +29,7 @@ class User(UserBase):
     """The schema used to expose the user model."""
 
     moderator: bool
+    active: bool
     created_at: datetime
     updated_at: datetime
 

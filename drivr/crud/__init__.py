@@ -1,2 +1,2 @@
-from .reports import reports  # noqa
-from .users import users  # noqa
+from .crud_reports import reports  # noqa
+from .crud_users import users  # noqa

@@ -13,6 +13,7 @@ class User(Entity):
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     moderator = Column(Boolean, nullable=False, default=False)
+    active = Column(Boolean, nullable=False, default=True)
     created_at = Column(
         DateTime,
         nullable=False,

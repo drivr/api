@@ -2,7 +2,7 @@ from typing import Optional
 
 from sqlalchemy.orm.session import Session
 
-from drivr import model, schema
+from drivr import model, schema, security
 
 from .crud_base import CRUDBase
 
@@ -15,6 +15,31 @@ class CRUDUsers(
     ]
 ):
     """CRUD actions associated to the 'user' entity."""
+
+    def authenticate(
+        self,
+        db: Session,
+        email: str,
+        password: str,
+    ) -> Optional[model.User]:
+        """
+        Authenticate the user.
+
+        Args:
+            db: the database session.
+            email: the user email.
+            password: the user password.
+
+        Returns:
+            The user object, if it exists. Otherwise, None is returned.
+        """
+
+        if user := self.get_by_email(db=db, email=email):
+            if security.verify_password(
+                plain_text=password,
+                hashed_password=user.password,
+            ):
+                return user
 
     def get_by_email(self, db: Session, email: str) -> Optional[model.User]:
         """
