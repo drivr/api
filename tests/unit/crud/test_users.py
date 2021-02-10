@@ -82,7 +82,7 @@ class TestAuthenticate:
             hashed_password=user.password,
         )
 
-    def test_should_return_the_user_object_when_user_exists_and_password_hash_match(
+    def test_should_return_the_user_object_when_it_exist_and_password_match(  # noqa
         self,
         faker,
         mocker,

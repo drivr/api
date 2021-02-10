@@ -1,7 +1,6 @@
 import factory
 
 from drivr import model
-from drivr.model.user import User
 
 factory.Faker._DEFAULT_LOCALE = "pt_BR"
 
