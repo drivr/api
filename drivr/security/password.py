@@ -1,9 +1,4 @@
-from datetime import datetime, timedelta
-
-from jwt import encode
 from passlib.hash import argon2
-
-from drivr import core
 
 
 def hash_password(plain_text: str) -> str:
@@ -31,28 +26,3 @@ def verify_password(plain_text: str, hashed_password: str) -> bool:
         True if the plain text match the hashed password, otherwise False.
     """
     return argon2.verify(plain_text, hashed_password)
-
-
-def create_access_token(subject: str) -> bytes:
-    """
-    Create the access token.
-
-    Args:
-        subject: the content to be encoded in token.
-
-    Returns:
-        The encoded token as bytes.
-    """
-
-    expires_in = datetime.now() + timedelta(
-        minutes=core.settings.ACCESS_TOKEN_EXPIRATION
-    )
-
-    return encode(
-        {
-            "exp": expires_in,
-            "sub": subject,
-        },
-        key=core.settings.SECRET_KEY,
-        algorithm=core.settings.ACCESS_TOKEN_ALGORITHM,
-    )
