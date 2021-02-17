@@ -1,5 +1,3 @@
-from starlette.testclient import TestClient
-
 from drivr import schema
 from drivr.api import deps
 from tests.unit.factories import UserFactory
@@ -238,7 +236,7 @@ class TestDelete:
         crud.get.assert_called_once_with(db=db, id=user.id)
         crud.remove.assert_not_called()
 
-    def test_should_return_404_when_user_is_not_found(
+    def test_should_return_200_with_removed_user_data(
         self,
         mocker,
         client,

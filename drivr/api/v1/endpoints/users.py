@@ -4,7 +4,6 @@ from fastapi import APIRouter, status
 from fastapi.exceptions import HTTPException
 from fastapi.params import Depends
 from sqlalchemy.orm.session import Session
-from starlette import responses
 
 from drivr import crud, model, schema
 from drivr.api import deps
@@ -24,6 +23,8 @@ async def get_users(
     db: Session = Depends(deps.db_session),
     _=Depends(deps.get_authenticated_active_user),
 ):
+    """GET method."""
+
     return crud.users.all(db=db, skip=skip, limit=limit)
 
 
@@ -40,6 +41,8 @@ async def create_user(
     schema: schema.UserCreate,
     db: Session = Depends(deps.db_session),
 ):
+    """POST method."""
+
     if user := crud.users.get_by_email(db=db, email=schema.email):
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
@@ -62,6 +65,8 @@ async def edit_user(
     db: Session = Depends(deps.db_session),
     moderator: model.User = Depends(deps.get_authenticated_moderator),
 ):
+    """PUT method."""
+
     if user := crud.users.get(db=db, id=id):
         return crud.users.update(db=db, user=user, schema=schema)
 
@@ -82,6 +87,8 @@ async def delete_user(
     db: Session = Depends(deps.db_session),
     moderator: model.User = Depends(deps.get_authenticated_moderator),
 ):
+    """DELETE method."""
+
     if user := crud.users.get(db=db, id=id):
         return crud.users.remove(db=db, model=user)
 
