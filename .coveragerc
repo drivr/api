@@ -2,7 +2,7 @@
 source = drivr
 
 [report]
-# fail_under = 99
+fail_under = 99
 exclude_lines =
     pragma: no cover
     def __repr__
