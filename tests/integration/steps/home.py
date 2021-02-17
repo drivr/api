@@ -6,7 +6,7 @@ from requests import get
 
 
 @given("the endpoint {endpoint} is successfully requested")
-def step_impl(context: Context, endpoint: str):
+def assert_status_200_from_endpoint(context: Context, endpoint: str):
     url = f"{context.url_root}{endpoint}"
 
     context.response = get(url, allow_redirects=True)
@@ -19,7 +19,7 @@ def step_impl(context: Context, endpoint: str):
 
 
 @then("the JSON response should be")
-def step_impl(context: Context):
+def assert_json_response(context: Context):
     expected = loads(context.text)
     actual = context.response.json()
 
