@@ -3,6 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 from pydantic.networks import EmailStr
+from pydantic.types import SecretStr
 
 
 class UserBase(BaseModel):
@@ -14,14 +15,14 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     """The schema used to create the user model."""
 
-    password: str
+    password: SecretStr
 
 
 class UserUpdate(UserBase):
     """The schema used to update the user model."""
 
     email: Optional[EmailStr] = None
-    password: Optional[str] = None
+    password: Optional[SecretStr] = None
     moderator: Optional[bool] = None
 
 
