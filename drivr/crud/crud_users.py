@@ -3,7 +3,6 @@ from typing import Optional
 from sqlalchemy.orm.session import Session
 
 from drivr import model, schema, security
-from drivr.security.password import hash_password
 
 from .crud_base import CRUDBase
 
@@ -36,7 +35,7 @@ class CRUDUsers(
         """
 
         if user := self.get_by_email(db=db, email=email):
-            if security.verify_password(
+            if security.password.verify_password(
                 plain_text=password,
                 hashed_password=user.password,
             ):
@@ -72,7 +71,9 @@ class CRUDUsers(
             The created user.
         """
         user = model.User(**schema.dict())
-        user.password = hash_password(user.password.get_secret_value())
+        user.password = security.password.hash_password(
+            user.password.get_secret_value()
+        )
 
         db.add(user)
         db.commit()
@@ -101,7 +102,9 @@ class CRUDUsers(
         update_data = schema.dict(exclude_unset=True)
 
         if schema.password:
-            hashed_password = hash_password(schema.password.get_secret_value())
+            hashed_password = security.password.hash_password(
+                schema.password.get_secret_value()
+            )
             del update_data["password"]
             update_data["password"] = hashed_password
 

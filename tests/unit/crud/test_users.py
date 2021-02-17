@@ -61,7 +61,7 @@ class TestAuthenticate:
         db = mocker.MagicMock()
 
         verify_password = mocker.patch(
-            f"{MODULE}.security.verify_password",
+            f"{MODULE}.security.password.verify_password",
             return_value=False,
         )
 
@@ -101,7 +101,7 @@ class TestAuthenticate:
             return_value=user,
         )
         verify_password = mocker.patch(
-            f"{MODULE}.security.verify_password",
+            f"{MODULE}.security.password.verify_password",
             return_value=True,
         )
 
@@ -129,7 +129,7 @@ class TestCreate:
 
         mocker.patch(f"{MODULE}.model.User", return_value=created_user)
         hash_password = mocker.patch(
-            f"{MODULE}.hash_password",
+            f"{MODULE}.security.password.hash_password",
             return_value=hashed_password,
         )
 
@@ -156,7 +156,9 @@ class TestUpdate:
         db = mocker.MagicMock()
         user = UserFactory()
 
-        hash_password = mocker.patch(f"{MODULE}.hash_password")
+        hash_password = mocker.patch(
+            f"{MODULE}.security.password.hash_password"
+        )
         update_method = mocker.patch(
             f"{MODULE}.CRUDBase.update",
             return_value=user,
@@ -191,7 +193,7 @@ class TestUpdate:
         user = UserFactory()
 
         hash_password = mocker.patch(
-            f"{MODULE}.hash_password",
+            f"{MODULE}.security.password.hash_password",
             return_value=hashed_password,
         )
         update_method = mocker.patch(
